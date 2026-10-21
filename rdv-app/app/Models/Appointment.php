@@ -9,7 +9,7 @@ class Appointment extends Model
 {
     /** @use HasFactory<\Database\Factories\AppointmentFactory> */
     use HasFactory;
-
+    
     protected $fillable = ['patient_phone', 'service', 'appointment_date', 'slots', 'status', 'cancel_reason'];
 
     protected function casts(): array
