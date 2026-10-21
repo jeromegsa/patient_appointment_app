@@ -54,6 +54,12 @@ class UpdateAppointmentStatusRequest extends FormRequest
             'cancel_reason.required_if' => "Le motif d'annulation est obligatoire.",
             'cancel_reason.min' => "Le motif d'annulation doit contenir au moins 5 caractères.",
             'cancel_reason.max' => "Le motif d'annulation ne doit pas dépasser 200 caractères.",
+            'patient_phone.required' => 'Le téléphone est obligatoire.',
+            'service.required' => 'Le service est obligatoire.',
+            'appointment_date.required' => 'La date du rendez-vous est obligatoire.',
+            'slots.required' => 'Le nombre de créneaux est obligatoire.',
+            'status.required' => 'Le statut est obligatoire.',
+
         ];
     }
 }

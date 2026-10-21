@@ -54,6 +54,12 @@ class StoreAppointmentRequest extends FormRequest
             'appointment_date.before_or_equal' => 'La date du rendez-vous ne peut pas dépasser 60 jours.',
             'slots.between' => 'Le nombre de créneaux doit être compris entre 1 et 3.',
             'slots.integer' => 'Le nombre de créneaux doit être un entier.',
+            'patient_phone.required' => 'Le téléphone est obligatoire.',
+            'service.required' => 'Le service est obligatoire.',
+            'appointment_date.required' => 'La date du rendez-vous est obligatoire.',
+            'slots.required' => 'Le nombre de créneaux est obligatoire.',
+            'status.required' => 'Le statut est obligatoire.',
+
         ];
     }
 }
