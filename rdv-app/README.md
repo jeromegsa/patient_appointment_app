@@ -88,6 +88,30 @@ Les tests (`tests/Feature/AppointmentTest.php`) utilisent une base SQLite en mé
 
 Pour lancer un seul test : `php artisan test --filter=test_r8`.
 
+### Données de démonstration
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+Attention : cette commande **vide** la base avant de la remplir. Elle crée :
+
+| Patient | Contenu | Sert à tester |
+|---|---|---|
+| `0123456789` | 7 rendez-vous : planifié (id 1), confirmé (2), annulé (3), terminé (4), absent (5), deux planifiés le même jour (6 et 7) | la liste, le filtre par statut, le tri, les états finaux (409) |
+| `0111111111` | un confirmé aujourd'hui (id 8), un confirmé demain (id 9) | R8 : `termine` accepté sur le 8, refusé (409) sur le 9 |
+| 5 autres patients | rendez-vous aléatoires valides | volume |
+
+Les identifiants indiqués supposent une base vide au départ.
+
+La factory (`database/factories/AppointmentFactory.php`) fournit aussi des états réutilisables dans les tests ou dans `php artisan tinker` :
+
+```php
+Appointment::factory()->confirme()->aujourdhui()->create();
+Appointment::factory()->annule('Patient malade')->pourPatient('0123456789')->create();
+Appointment::factory()->count(10)->create();
+```
+
 ### Tests manuels route par route
 
 Démarrez le serveur avec `php artisan serve`, puis utilisez Postman, Insomnia, l'extension REST Client de VS Code, ou `curl`.
